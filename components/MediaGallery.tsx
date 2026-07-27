@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import type { MediaItem } from "@/data/projects";
@@ -44,6 +44,13 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
       behavior: "smooth",
     });
   };
+
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const setVideoVolume = useCallback((index: number) => {
+    const video = videoRefs.current[index];
+    if (video) video.volume = 0.2;
+  }, []);
 
   return (
     <section className="relative">
@@ -94,9 +101,10 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
             ) : (
               <div className="relative w-full h-full bg-dark-800 flex items-center justify-center">
                 <video
+                  ref={(el) => { videoRefs.current[index] = el; }}
+                  onLoadedData={() => setVideoVolume(index)}
                   src={item.src}
                   className="w-full h-full object-cover"
-                  muted
                   playsInline
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-dark-950/30 group-hover:bg-dark-950/10 transition-colors">

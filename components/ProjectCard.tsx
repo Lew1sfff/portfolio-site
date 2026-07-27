@@ -46,8 +46,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Always visible title on mobile */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent md:hidden">
-        <h3 className="text-sm font-semibold text-white drop-shadow-md">
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black via-black/80 to-transparent md:hidden">
+        <h3 className="text-base font-bold text-white drop-shadow-lg">
           {project.title}
         </h3>
       </div>
