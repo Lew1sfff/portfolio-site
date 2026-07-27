@@ -9,7 +9,7 @@ export default function AboutSection() {
       </h1>
       <div className="max-w-3xl space-y-6 text-text-secondary text-lg leading-relaxed">
         <p>
-          你好，我是林弋普，一名视觉设计师，专注于商业摄影、产品拍摄与设计领域。
+          你好，我是<span className="text-yellow-400 font-semibold">林弋普</span>，一名视觉设计师，专注于商业摄影、产品拍摄与设计领域。
           擅长将品牌理念转化为有冲击力的视觉语言，用镜头和设计讲述独特的故事。
         </p>
         <p>
