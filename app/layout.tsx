@@ -1,0 +1,44 @@
+import type { Metadata } from "next";
+import { Geist } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: {
+    default: "林弋普 - 视觉设计师作品集",
+    template: "%s | 林弋普",
+  },
+  description:
+    "林弋普个人作品集，展示商业摄影、产品拍摄、视觉设计等创意作品。",
+  openGraph: {
+    type: "website",
+    locale: "zh_CN",
+    siteName: "Lew1s' works",
+    title: "林弋普 - 视觉设计师作品集",
+    description: "林弋普个人作品集，展示商业摄影、产品拍摄、视觉设计等创意作品。",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="zh-CN" className={`${geistSans.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-dark-900 text-text-primary font-sans">
+        <SmoothScroll />
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
