@@ -89,6 +89,7 @@ export default function Lightbox({ items, initialIndex, onClose }: LightboxProps
             controls
             autoPlay
             playsInline
+            preload="metadata"
           />
         )}
       </div>

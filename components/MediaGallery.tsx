@@ -105,9 +105,11 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
                   onLoadedData={() => setVideoVolume(index)}
                   src={item.src}
                   className="w-full h-full object-cover"
+                  preload="none"
                   playsInline
+                  poster=""
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-dark-950/30 group-hover:bg-dark-950/10 transition-colors">
+                <div className="absolute inset-0 flex items-center justify-center bg-dark-950/30 group-hover:bg-dark-950/10 transition-colors pointer-events-none">
                   <div className="w-20 h-20 rounded-full bg-electric/80 flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_40px_rgba(0,212,255,0.3)]">
                     <Play className="w-8 h-8 text-dark-900 ml-1" fill="currentColor" />
                   </div>
