@@ -22,6 +22,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: project.title,
     description: project.description,
+    openGraph: {
+      title: `${project.title} | 林弋普作品集`,
+      description: project.description,
+      type: "article",
+      images: [
+        {
+          url: project.cover,
+          width: 1200,
+          height: 630,
+          alt: project.title,
+        },
+      ],
+    },
   };
 }
 

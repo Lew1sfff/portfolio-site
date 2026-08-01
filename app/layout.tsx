@@ -17,12 +17,21 @@ export const metadata: Metadata = {
   },
   description:
     "林弋普个人作品集，展示商业摄影、产品拍摄、视觉设计等创意作品。",
+  metadataBase: new URL("https://www.lew1s.online"),
   openGraph: {
     type: "website",
     locale: "zh_CN",
     siteName: "Lew1s' works",
     title: "林弋普 - 视觉设计师作品集",
     description: "林弋普个人作品集，展示商业摄影、产品拍摄、视觉设计等创意作品。",
+    images: [
+      {
+        url: "/images/projects/menswear/1000048998.jpg",
+        width: 1200,
+        height: 630,
+        alt: "林弋普作品集",
+      },
+    ],
   },
 };
 

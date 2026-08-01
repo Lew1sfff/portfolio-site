@@ -1,8 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectCard from "./ProjectCard";
 import type { Project } from "@/data/projects";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ProjectGridProps {
   projects: Project[];
@@ -10,29 +14,47 @@ interface ProjectGridProps {
 
 export default function ProjectGrid({ projects }: ProjectGridProps) {
   const gridRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
+    // Heading animation
+    if (headingRef.current) {
+      gsap.from(headingRef.current.children, {
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 85%",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+      });
+    }
 
-    const cards = gridRef.current?.querySelectorAll(".reveal");
-    cards?.forEach((card) => observer.observe(card));
+    // Card animations
+    const cards = gridRef.current?.querySelectorAll(".project-card");
+    if (!cards) return;
 
-    return () => observer.disconnect();
+    cards.forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 88%",
+        },
+        y: 60,
+        opacity: 0,
+        scale: 0.96,
+        duration: 0.9,
+        delay: (i % 2) * 0.15,
+        ease: "power3.out",
+      });
+    });
   }, []);
 
   return (
     <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
-      <div className="mb-12">
+      <div ref={headingRef} className="mb-12">
         <p className="text-electric text-sm tracking-[0.2em] uppercase mb-2">
           Selected Works
         </p>
@@ -45,12 +67,8 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
         ref={gridRef}
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        {projects.map((project, index) => (
-          <div
-            key={project.id}
-            className="reveal"
-            style={{ transitionDelay: `${(index % 2) * 150}ms` }}
-          >
+        {projects.map((project) => (
+          <div key={project.id} className="project-card">
             <ProjectCard project={project} />
           </div>
         ))}

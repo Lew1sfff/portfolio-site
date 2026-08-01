@@ -79,6 +79,7 @@ export default function Lightbox({ items, initialIndex, onClose }: LightboxProps
             alt={item.alt}
             width={1200}
             height={900}
+            quality={90}
             className="max-w-[90vw] max-h-[85vh] object-contain"
             priority
           />
