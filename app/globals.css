@@ -37,11 +37,50 @@ html {
 body {
   background-color: var(--color-dark-900);
   color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
   background-color: var(--color-electric);
   color: var(--color-dark-900);
+}
+
+/* Light theme overrides */
+.light {
+  --color-dark-950: #f8f8f8;
+  --color-dark-900: #ffffff;
+  --color-dark-800: #f0f0f0;
+  --color-dark-700: #e4e4e4;
+  --color-dark-600: #d4d4d4;
+  --color-dark-500: #b0b0b0;
+  --color-dark-400: #888888;
+  --color-dark-300: #666666;
+  --color-dark-200: #444444;
+  --color-dark-100: #222222;
+
+  --color-electric: #0099cc;
+  --color-electric-dim: #007aa3;
+  --color-neon-green: #2bcc10;
+  --color-neon-green-dim: #1f990c;
+  --color-hot-orange: #e55a1b;
+  --color-hot-orange-dim: #b34715;
+
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-text-muted: #888888;
+}
+
+.light ::selection {
+  background-color: var(--color-electric);
+  color: #ffffff;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #cccccc;
 }
 
 /* Animations */

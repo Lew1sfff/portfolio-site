@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useLang } from "./LangProvider";
+import { useTheme } from "./ThemeProvider";
 
 const navLinks = [
   { href: "/", labelKey: "nav.home" },
@@ -15,6 +16,7 @@ const navLinks = [
 export default function Navbar() {
   const pathname = usePathname();
   const { t, toggleLang, lang } = useLang();
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -61,6 +63,14 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className="text-text-muted hover:text-electric transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           {/* Language toggle */}
           <button
             onClick={toggleLang}
@@ -72,6 +82,13 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <div className="md:flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="md:hidden text-text-muted hover:text-electric transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
           <button
             onClick={toggleLang}
             className="md:hidden text-xs px-2 py-1 rounded border border-dark-600 text-text-muted hover:text-electric transition-colors"
