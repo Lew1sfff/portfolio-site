@@ -5,12 +5,15 @@ export interface MediaItem {
   portrait?: boolean;
 }
 
+export type Category = "photography" | "design" | "social" | "portrait";
+
 export interface Project {
   id: string;
   title: string;
   description: string;
   cover: string;
   tags: string[];
+  category: Category;
   year: number;
   order: number;
   media: MediaItem[];
@@ -24,6 +27,7 @@ export const projects: Project[] = [
       "男装品牌商业摄影，涵盖产品特写、模特展示及场景搭配，突出面料质感与穿搭风格。",
     cover: "/images/projects/menswear/1000048998.jpg",
     tags: ["商业摄影", "男装"],
+    category: "photography",
     year: 2025,
     order: 1,
     media: [
@@ -57,6 +61,7 @@ export const projects: Project[] = [
       "饰品商业摄影，通过精致的光影与构图展现产品细节与质感，涵盖项链、手链、耳环等品类。",
     cover: "/images/projects/accessories/cover.jpg",
     tags: ["商业摄影", "饰品"],
+    category: "photography",
     year: 2025,
     order: 2,
     media: [
@@ -79,6 +84,7 @@ export const projects: Project[] = [
       "女鞋品牌商业拍摄项目，包含产品静物、上脚展示及动态视频，呈现鞋款的设计细节与穿着效果。",
     cover: "/images/projects/womens-shoes/DSC08874.jpg",
     tags: ["商业摄影", "女鞋", "产品拍摄"],
+    category: "photography",
     year: 2025,
     order: 3,
     media: [
@@ -105,6 +111,7 @@ export const projects: Project[] = [
       "人像肖像摄影系列，注重光影氛围与人物情绪表达，涵盖个人形象照、艺术肖像及商业人像。",
     cover: "/images/projects/portrait/1784918740694.jpg",
     tags: ["肖像", "人像摄影", "个人形象"],
+    category: "portrait",
     year: 2025,
     order: 4,
     media: [
@@ -126,6 +133,7 @@ export const projects: Project[] = [
       "为小红书平台定制的创意视觉素材，风格年轻化、高辨识度，适合社交媒体传播与品牌种草内容。",
     cover: "/images/projects/xiaohongshu-creative/1000049122.jpg",
     tags: ["社交媒体", "创意设计", "小红书"],
+    category: "social",
     year: 2025,
     order: 5,
     media: [
@@ -149,6 +157,7 @@ export const projects: Project[] = [
       "商业综合体品牌宣传设计项目，包含灯箱广告、活动视觉及空间导视系统，兼顾品牌调性与商业转化。",
     cover: "/images/projects/mall-branding/乐清正大银泰-04.jpg",
     tags: ["品牌设计", "灯箱广告", "商业视觉"],
+    category: "design",
     year: 2025,
     order: 6,
     media: [
@@ -166,6 +175,7 @@ export const projects: Project[] = [
       "餐饮行业视觉素材设计，涵盖菜品拍摄、菜单设计及品牌视觉物料，突出食物质感与用餐氛围。",
     cover: "/images/projects/food-beverage/萬發發市井小火锅2.png",
     tags: ["餐饮", "美食摄影", "物料设计"],
+    category: "design",
     year: 2025,
     order: 8,
     media: [
@@ -181,6 +191,7 @@ export const projects: Project[] = [
       "室内装饰行业视觉素材，展示空间设计方案与装饰效果呈现。",
     cover: "/images/projects/interior/云信.jpg",
     tags: ["装饰设计", "空间视觉"],
+    category: "design",
     year: 2025,
     order: 10,
     media: [
@@ -194,6 +205,7 @@ export const projects: Project[] = [
       "美业品牌视觉素材设计，包含产品海报、系列宣传图及社交媒体素材，强调产品质感与品牌美学。",
     cover: "/images/projects/beauty/查尔酮   80x200cm.jpg",
     tags: ["美业", "海报设计", "品牌视觉"],
+    category: "design",
     year: 2025,
     order: 7,
     media: [
@@ -214,6 +226,7 @@ export const projects: Project[] = [
       "教育培训行业视觉素材，包含课程宣传图及品牌视觉设计。",
     cover: "/images/projects/education/微信图片_20240831095204.jpg",
     tags: ["教培", "宣传设计"],
+    category: "design",
     year: 2024,
     order: 9,
     media: [

@@ -66,6 +66,14 @@ const translations: Record<string, Record<Lang, string>> = {
   "nav.next": { zh: "下一个项目", en: "Next" },
   "nav.back": { zh: "返回", en: "Back" },
 
+  // Filter
+  "filter.all": { zh: "全部", en: "All" },
+  "filter.photography": { zh: "商业摄影", en: "Photography" },
+  "filter.portrait": { zh: "人像", en: "Portrait" },
+  "filter.design": { zh: "设计", en: "Design" },
+  "filter.social": { zh: "社交媒体", en: "Social Media" },
+  "filter.empty": { zh: "暂无此类项目", en: "No projects in this category" },
+
   // Skills
   "skill.commercial": { zh: "商业摄影", en: "Commercial Photography" },
   "skill.product": { zh: "产品拍摄", en: "Product Shooting" },
