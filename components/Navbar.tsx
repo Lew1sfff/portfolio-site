@@ -4,15 +4,17 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { useLang } from "./LangProvider";
 
 const navLinks = [
-  { href: "/", label: "首页" },
-  { href: "/about", label: "关于" },
-  { href: "/contact", label: "联系" },
+  { href: "/", labelKey: "nav.home" },
+  { href: "/about", labelKey: "nav.about" },
+  { href: "/contact", labelKey: "nav.contact" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { t, toggleLang, lang } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -55,20 +57,35 @@ export default function Navbar() {
                     : "text-text-secondary hover:text-text-primary"
                 }`}
               >
-                {link.label}
+                {t(link.labelKey)}
               </Link>
             </li>
           ))}
+          {/* Language toggle */}
+          <button
+            onClick={toggleLang}
+            className="text-xs px-2 py-1 rounded border border-dark-600 text-text-muted hover:text-electric hover:border-electric/50 transition-colors"
+          >
+            {lang === "zh" ? "EN" : "中"}
+          </button>
         </ul>
 
         {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-text-primary p-2"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="md:flex items-center gap-3">
+          <button
+            onClick={toggleLang}
+            className="md:hidden text-xs px-2 py-1 rounded border border-dark-600 text-text-muted hover:text-electric transition-colors"
+          >
+            {lang === "zh" ? "EN" : "中"}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden text-text-primary p-2"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile menu */}
@@ -85,7 +102,7 @@ export default function Navbar() {
                       : "text-text-secondary hover:text-text-primary"
                   }`}
                 >
-                  {link.label}
+                  {t(link.labelKey)}
                 </Link>
               </li>
             ))}

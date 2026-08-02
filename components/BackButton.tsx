@@ -2,9 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { useLang } from "./LangProvider";
 
 export default function BackButton() {
   const router = useRouter();
+  const { t } = useLang();
 
   return (
     <button
@@ -13,7 +15,7 @@ export default function BackButton() {
       style={{ pointerEvents: "auto" }}
     >
       <ArrowLeft size={16} />
-      返回
+      {t("nav.back")}
     </button>
   );
 }

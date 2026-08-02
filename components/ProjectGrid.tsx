@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectCard from "./ProjectCard";
+import { useLang } from "./LangProvider";
 import type { Project } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +16,7 @@ interface ProjectGridProps {
 export default function ProjectGrid({ projects }: ProjectGridProps) {
   const gridRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
 
   useEffect(() => {
     // Heading animation
@@ -56,10 +58,10 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
     <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
       <div ref={headingRef} className="mb-12">
         <p className="text-electric text-sm tracking-[0.2em] uppercase mb-2">
-          Selected Works
+          {t("grid.tag")}
         </p>
         <h2 className="text-3xl md:text-4xl font-bold text-text-primary tracking-tight">
-          精选项目
+          {t("grid.title")}
         </h2>
       </div>
 

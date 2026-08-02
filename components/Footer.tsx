@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Camera, Mail, Globe } from "lucide-react";
+import { useLang } from "./LangProvider";
 
 export default function Footer() {
+  const { t } = useLang();
+
   return (
     <footer className="bg-dark-950 border-t border-dark-700">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
@@ -41,7 +46,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-text-muted text-sm">
-            &copy; {new Date().getFullYear()} All rights reserved.
+            &copy; {new Date().getFullYear()} {t("footer.rights")}.
           </p>
         </div>
       </div>

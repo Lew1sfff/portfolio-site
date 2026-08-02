@@ -1,17 +1,18 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useLang } from "./LangProvider";
 
 const skills = [
-  { name: "商业摄影", color: "electric" },
-  { name: "产品拍摄", color: "neon-green" },
-  { name: "人像摄影", color: "hot-orange" },
-  { name: "视频拍摄", color: "electric" },
-  { name: "平面设计", color: "neon-green" },
-  { name: "海报设计", color: "hot-orange" },
-  { name: "品牌视觉", color: "electric" },
-  { name: "社交媒体", color: "neon-green" },
-  { name: "创意策划", color: "hot-orange" },
+  { nameKey: "skill.commercial", color: "electric" },
+  { nameKey: "skill.product", color: "neon-green" },
+  { nameKey: "skill.portrait", color: "hot-orange" },
+  { nameKey: "skill.video", color: "electric" },
+  { nameKey: "skill.graphics", color: "neon-green" },
+  { nameKey: "skill.poster", color: "hot-orange" },
+  { nameKey: "skill.branding", color: "electric" },
+  { nameKey: "skill.social", color: "neon-green" },
+  { nameKey: "skill.creative", color: "hot-orange" },
 ];
 
 const colorMap: Record<string, string> = {
@@ -22,6 +23,7 @@ const colorMap: Record<string, string> = {
 
 export default function SkillsCloud() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -49,24 +51,21 @@ export default function SkillsCloud() {
   return (
     <section className="mb-20">
       <p className="text-electric text-sm tracking-[0.2em] uppercase mb-4">
-        Skills
+        {t("about.skills.tag")}
       </p>
       <h2 className="text-2xl md:text-3xl font-bold text-text-primary tracking-tight mb-8">
-        技能
+        {t("about.skills.title")}
       </h2>
-      <div
-        ref={containerRef}
-        className="flex flex-wrap gap-3"
-      >
+      <div ref={containerRef} className="flex flex-wrap gap-3">
         {skills.map((skill) => (
           <span
-            key={skill.name}
+            key={skill.nameKey}
             className={`skill-tag px-4 py-2 text-sm rounded-full border transition-all duration-300 cursor-default hover:scale-110 hover:shadow-lg ${
               colorMap[skill.color]
             }`}
             style={{ opacity: 0, transform: "translateY(10px) scale(0.9)" }}
           >
-            {skill.name}
+            {t(skill.nameKey)}
           </span>
         ))}
       </div>

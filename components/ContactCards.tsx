@@ -2,17 +2,18 @@
 
 import { useState } from "react";
 import { Mail, Phone, Check } from "lucide-react";
+import { useLang } from "./LangProvider";
 
 const contacts = [
   {
     icon: Mail,
-    label: "邮箱",
+    labelKey: "contact.email",
     value: "Lew1s1224@foxmail.com",
     color: "electric",
   },
   {
     icon: Phone,
-    label: "电话",
+    labelKey: "contact.phone",
     value: "13758725906",
     color: "hot-orange",
   },
@@ -38,6 +39,7 @@ const colorMap: Record<string, { bg: string; text: string; border: string }> = {
 
 export default function ContactCards() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const { t } = useLang();
 
   const handleCopy = async (value: string, index: number) => {
     try {
@@ -45,7 +47,6 @@ export default function ContactCards() {
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(null), 2000);
     } catch {
-      // Fallback for older browsers
       const textArea = document.createElement("textarea");
       textArea.value = value;
       document.body.appendChild(textArea);
@@ -63,10 +64,10 @@ export default function ContactCards() {
         Contact
       </p>
       <h1 className="text-4xl md:text-5xl font-bold text-text-primary tracking-tight mb-4">
-        联系我
+        {t("contact.title")}
       </h1>
       <p className="text-text-secondary text-lg mb-12 max-w-2xl">
-        有合作意向或想聊聊？欢迎通过以下方式联系我。
+        {t("contact.desc")}
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
@@ -77,12 +78,12 @@ export default function ContactCards() {
 
           return (
             <button
-              key={contact.label}
+              key={contact.labelKey}
               onClick={() => handleCopy(contact.value, index)}
               className={`group relative p-8 rounded-xl border transition-all duration-300 text-left ${colors.bg} ${colors.border}`}
             >
               <Icon className={`w-8 h-8 ${colors.text} mb-4`} />
-              <p className="text-text-muted text-sm mb-1">{contact.label}</p>
+              <p className="text-text-muted text-sm mb-1">{t(contact.labelKey)}</p>
               <p className={`text-lg font-medium ${colors.text}`}>
                 {contact.value}
               </p>
@@ -90,7 +91,7 @@ export default function ContactCards() {
                 {isCopied ? (
                   <Check className="w-5 h-5 text-neon-green" />
                 ) : (
-                  <span className="text-text-muted text-xs">点击复制</span>
+                  <span className="text-text-muted text-xs">{t("contact.copy")}</span>
                 )}
               </div>
             </button>

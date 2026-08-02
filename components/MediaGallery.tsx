@@ -5,6 +5,7 @@ import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { useLang } from "./LangProvider";
 import type { MediaItem } from "@/data/projects";
 import Lightbox from "./Lightbox";
 
@@ -20,6 +21,7 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
   const progressRef = useRef<HTMLDivElement>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const { t } = useLang();
 
   // Check mobile
   useEffect(() => {
@@ -226,7 +228,7 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
       {/* Scroll indicator */}
       <div className="flex items-center justify-center gap-3 pt-6 text-text-muted text-sm">
         <div className="w-8 h-[1px] bg-dark-600" />
-        <span>点击作品可放大浏览</span>
+        <span>{t("gallery.hint")}</span>
         <div className="w-8 h-[1px] bg-dark-600" />
       </div>
 

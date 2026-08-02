@@ -1,27 +1,29 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useLang } from "./LangProvider";
 
 const experiences = [
   {
     year: "2025",
-    title: "自由视觉创作者",
-    description: "专注商业摄影、产品拍摄及品牌视觉设计，服务多个电商品牌。",
+    titleKey: { zh: "自由视觉创作者", en: "Freelance Visual Creator" },
+    descKey: { zh: "专注商业摄影、产品拍摄及品牌视觉设计，服务多个电商品牌。", en: "Focused on commercial photography, product shooting, and brand visual design for multiple e-commerce brands." },
   },
   {
     year: "2024",
-    title: "商业摄影 & 设计",
-    description: "参与多个品牌的视觉项目，涵盖服装、美妆、餐饮等行业。",
+    titleKey: { zh: "商业摄影 & 设计", en: "Commercial Photography & Design" },
+    descKey: { zh: "参与多个品牌的视觉项目，涵盖服装、美妆、餐饮等行业。", en: "Participated in visual projects for multiple brands, covering fashion, beauty, and F&B industries." },
   },
   {
     year: "2023",
-    title: "开始视觉创作之路",
-    description: "踏入摄影与设计领域，开始积累商业项目经验。",
+    titleKey: { zh: "开始视觉创作之路", en: "Started Visual Creative Journey" },
+    descKey: { zh: "踏入摄影与设计领域，开始积累商业项目经验。", en: "Stepped into photography and design, began accumulating commercial project experience." },
   },
 ];
 
 export default function Timeline() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { t, lang } = useLang();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,10 +47,10 @@ export default function Timeline() {
   return (
     <section>
       <p className="text-electric text-sm tracking-[0.2em] uppercase mb-4">
-        Experience
+        {t("about.exp.tag")}
       </p>
       <h2 className="text-2xl md:text-3xl font-bold text-text-primary tracking-tight mb-8">
-        经历
+        {t("about.exp.title")}
       </h2>
       <div ref={containerRef} className="relative pl-8">
         {/* Vertical line */}
@@ -65,10 +67,10 @@ export default function Timeline() {
 
             <span className="text-electric text-sm font-mono tracking-wider">{exp.year}</span>
             <h3 className="text-lg font-semibold text-text-primary mt-2">
-              {exp.title}
+              {exp.titleKey[lang]}
             </h3>
             <p className="text-text-secondary mt-2 leading-relaxed">
-              {exp.description}
+              {exp.descKey[lang]}
             </p>
           </div>
         ))}

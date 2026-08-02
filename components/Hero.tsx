@@ -2,22 +2,24 @@
 
 import { useEffect, useRef } from "react";
 import { ChevronDown } from "lucide-react";
+import { useLang } from "./LangProvider";
 
-const keywords = ["设计", "摄影"];
+const keywordKeys = ["hero.word1", "hero.word2"];
 
 export default function Hero() {
   const wordRef = useRef<HTMLSpanElement>(null);
   const indexRef = useRef(0);
+  const { t } = useLang();
 
   useEffect(() => {
     const interval = setInterval(() => {
-      indexRef.current = (indexRef.current + 1) % keywords.length;
+      indexRef.current = (indexRef.current + 1) % keywordKeys.length;
       if (wordRef.current) {
         wordRef.current.style.opacity = "0";
         wordRef.current.style.transform = "translateY(-20px)";
         setTimeout(() => {
           if (wordRef.current) {
-            wordRef.current.textContent = keywords[indexRef.current];
+            wordRef.current.textContent = t(keywordKeys[indexRef.current]);
             wordRef.current.style.opacity = "1";
             wordRef.current.style.transform = "translateY(0)";
           }
@@ -25,7 +27,7 @@ export default function Hero() {
       }
     }, 2500);
     return () => clearInterval(interval);
-  }, []);
+  }, [t]);
 
   return (
     <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-dark-950">
@@ -48,7 +50,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 text-center px-6">
         <p className="text-text-secondary text-sm tracking-[0.3em] uppercase mb-6 animate-fade-in">
-          Lew1s' works
+          {t("hero.tag")}
         </p>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none animate-fade-in-up">
@@ -57,12 +59,12 @@ export default function Hero() {
             ref={wordRef}
             className="inline-block text-electric ml-4 transition-all duration-300"
           >
-            {keywords[0]}
+            {t(keywordKeys[0])}
           </span>
         </h1>
 
         <p className="mt-8 text-text-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed animate-fade-in delay-300" style={{ opacity: 0 }}>
-          用镜头捕捉细节，用设计讲述故事
+          {t("hero.subtitle")}
         </p>
       </div>
 
