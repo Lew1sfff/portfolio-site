@@ -3,6 +3,7 @@ export interface MediaItem {
   type: "image" | "video";
   alt: string;
   portrait?: boolean;
+  poster?: string;
 }
 
 export type Category = "photography" | "design" | "social" | "portrait";
@@ -31,8 +32,8 @@ export const projects: Project[] = [
     year: 2025,
     order: 1,
     media: [
-      { src: "/images/projects/menswear/1000048984.mp4", type: "video", alt: "男装视频 1" },
-      { src: "/images/projects/menswear/1000048985.mp4", type: "video", alt: "男装视频 2" },
+      { src: "/images/projects/menswear/1000048984.mp4", type: "video", alt: "男装视频 1", poster: "/images/projects/menswear/1000048984_poster.jpg" },
+      { src: "/images/projects/menswear/1000048985.mp4", type: "video", alt: "男装视频 2", poster: "/images/projects/menswear/1000048985_poster.jpg" },
       { src: "/images/projects/menswear/1000048767(1).jpg", type: "image", alt: "男装展示 1" },
       { src: "/images/projects/menswear/1000048768.jpg", type: "image", alt: "男装展示 2" },
       { src: "/images/projects/menswear/1000048769.jpg", type: "image", alt: "男装展示 3" },
@@ -65,8 +66,8 @@ export const projects: Project[] = [
     year: 2025,
     order: 2,
     media: [
-      { src: "/images/projects/accessories/1000048996.mp4", type: "video", alt: "饰品视频 1" },
-      { src: "/images/projects/accessories/1000050102.mp4", type: "video", alt: "饰品视频 2" },
+      { src: "/images/projects/accessories/1000048996.mp4", type: "video", alt: "饰品视频 1", poster: "/images/projects/accessories/1000048996_poster.jpg" },
+      { src: "/images/projects/accessories/1000050102.mp4", type: "video", alt: "饰品视频 2", poster: "/images/projects/accessories/1000050102_poster.jpg" },
       { src: "/images/projects/accessories/122066.JPG", type: "image", alt: "饰品展示 1" },
       { src: "/images/projects/accessories/122068.JPG", type: "image", alt: "饰品展示 2" },
       { src: "/images/projects/accessories/122071.JPG", type: "image", alt: "饰品展示 3" },
@@ -94,11 +95,11 @@ export const projects: Project[] = [
     year: 2025,
     order: 3,
     media: [
-      { src: "/images/projects/womens-shoes/8月21日(1).mp4", type: "video", alt: "女鞋视频 1" },
-      { src: "/images/projects/womens-shoes/8月13日 (1).mp4", type: "video", alt: "女鞋视频 2" },
-      { src: "/images/projects/womens-shoes/8月16日 (1).mp4", type: "video", alt: "女鞋视频 3" },
-      { src: "/images/projects/womens-shoes/8月17日 (2).mp4", type: "video", alt: "女鞋视频 4" },
-      { src: "/images/projects/womens-shoes/8月20日 (1)(3).mp4", type: "video", alt: "女鞋视频 5" },
+      { src: "/images/projects/womens-shoes/8月21日(1).mp4", type: "video", alt: "女鞋视频 1", poster: "/images/projects/womens-shoes/8月21日(1)_poster.jpg" },
+      { src: "/images/projects/womens-shoes/8月13日 (1).mp4", type: "video", alt: "女鞋视频 2", poster: "/images/projects/womens-shoes/8月13日 (1)_poster.jpg" },
+      { src: "/images/projects/womens-shoes/8月16日 (1).mp4", type: "video", alt: "女鞋视频 3", poster: "/images/projects/womens-shoes/8月16日 (1)_poster.jpg" },
+      { src: "/images/projects/womens-shoes/8月17日 (2).mp4", type: "video", alt: "女鞋视频 4", poster: "/images/projects/womens-shoes/8月17日 (2)_poster.jpg" },
+      { src: "/images/projects/womens-shoes/8月20日 (1)(3).mp4", type: "video", alt: "女鞋视频 5", poster: "/images/projects/womens-shoes/8月20日 (1)(3)_poster.jpg" },
       { src: "/images/projects/womens-shoes/DSC08257.JPG", type: "image", alt: "女鞋拍摄 1" },
       { src: "/images/projects/womens-shoes/DSC08739.JPG", type: "image", alt: "女鞋拍摄 2", portrait: true },
       { src: "/images/projects/womens-shoes/DSC08820.jpg", type: "image", alt: "女鞋拍摄 3", portrait: true },

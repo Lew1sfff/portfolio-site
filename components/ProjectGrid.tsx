@@ -32,13 +32,14 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
   useEffect(() => {
     // Heading animation
     if (headingRef.current) {
-      gsap.from(headingRef.current.children, {
+      gsap.fromTo(headingRef.current.children, { y: 40, opacity: 0 }, {
         scrollTrigger: {
           trigger: headingRef.current,
           start: "top 85%",
+          toggleActions: "play none none none",
         },
-        y: 40,
-        opacity: 0,
+        y: 0,
+        opacity: 1,
         duration: 0.8,
         stagger: 0.15,
         ease: "power3.out",
@@ -50,19 +51,24 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
     if (!cards) return;
 
     cards.forEach((card, i) => {
-      gsap.from(card, {
+      gsap.fromTo(card, { y: 60, opacity: 0, scale: 0.96 }, {
         scrollTrigger: {
           trigger: card,
           start: "top 88%",
+          toggleActions: "play none none none",
         },
-        y: 60,
-        opacity: 0,
-        scale: 0.96,
+        y: 0,
+        opacity: 1,
+        scale: 1,
         duration: 0.9,
         delay: (i % 2) * 0.15,
         ease: "power3.out",
       });
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, []);
 
   // Animate cards on filter change

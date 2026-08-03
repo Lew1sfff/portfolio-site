@@ -136,14 +136,15 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
                   loading="lazy"
                 />
               ) : (
-                <div className="relative w-full h-full bg-dark-800 flex items-center justify-center">
+                <div className="relative w-full h-full bg-dark-950/30 flex items-center justify-center">
                   <video
                     ref={(el) => { videoRefs.current[index] = el; }}
                     onLoadedData={() => setVideoVolume(index)}
                     src={item.src}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                     preload="none"
                     playsInline
+                    poster={item.poster}
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-dark-950/30 pointer-events-none">
                     <div className="w-12 h-12 rounded-full bg-electric/80 flex items-center justify-center shadow-[0_0_30px_rgba(0,212,255,0.3)]">
@@ -183,19 +184,20 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
                     alt={item.alt}
                     fill
                     quality={80}
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-contain bg-dark-950/30 transition-transform duration-700 group-hover:scale-105"
                     sizes="70vw"
                     loading="lazy"
                   />
                 ) : (
-                  <div className="relative w-full h-full bg-dark-800 flex items-center justify-center">
+                  <div className="relative w-full h-full bg-dark-950/30 flex items-center justify-center">
                     <video
                       ref={(el) => { videoRefs.current[index] = el; }}
                       onLoadedData={() => setVideoVolume(index)}
                       src={item.src}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                       preload="none"
                       playsInline
+                      poster={item.poster}
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-dark-950/30 group-hover:bg-dark-950/10 transition-colors pointer-events-none">
                       <div className="w-20 h-20 rounded-full bg-electric/80 flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_40px_rgba(0,212,255,0.3)]">
