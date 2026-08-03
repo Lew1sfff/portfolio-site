@@ -70,17 +70,16 @@ export default function Lightbox({ items, initialIndex, onClose }: LightboxProps
 
       {/* Content */}
       <div
-        className="max-w-[90vw] max-h-[90vh] relative"
+        className="w-[90vw] h-[85vh] relative"
         onClick={(e) => e.stopPropagation()}
       >
         {item.type === "image" ? (
           <Image
             src={item.src}
             alt={item.alt}
-            width={1200}
-            height={900}
+            fill
             quality={90}
-            className="max-w-[90vw] max-h-[85vh] object-contain"
+            className="object-contain"
             priority
           />
         ) : (
