@@ -75,6 +75,12 @@ export const projects: Project[] = [
       { src: "/images/projects/accessories/122083.JPG", type: "image", alt: "饰品展示 6" },
       { src: "/images/projects/accessories/122085.JPG", type: "image", alt: "饰品展示 7" },
       { src: "/images/projects/accessories/122088.JPG", type: "image", alt: "饰品展示 8" },
+      { src: "/images/projects/accessories/1000050353.jpg", type: "image", alt: "饰品展示 9" },
+      { src: "/images/projects/accessories/1000050354.jpg", type: "image", alt: "饰品展示 10" },
+      { src: "/images/projects/accessories/1000050355.jpg", type: "image", alt: "饰品展示 11" },
+      { src: "/images/projects/accessories/1000050356.jpg", type: "image", alt: "饰品展示 12" },
+      { src: "/images/projects/accessories/1000050357.jpg", type: "image", alt: "饰品展示 13" },
+      { src: "/images/projects/accessories/1000050358.jpg", type: "image", alt: "饰品展示 14" },
     ],
   },
   {
